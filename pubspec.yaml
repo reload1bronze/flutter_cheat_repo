@@ -40,6 +40,8 @@ dependencies:
 
   # 상태 관리
   provider: ^6.0.3
+  flutter_state_notifier: ^0.7.1
+  state_notifier: ^0.7.2+1
 
   # 위젯의 unique한 Id 생성
   uuid: ^3.0.6
