@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cheat_repo/todo_provider_refactoring/todo_app_refactoring.dart';
+import 'package:flutter_cheat_repo/todo_provider_state/todo_app_state.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,6 +12,10 @@ class MyApp extends StatelessWidget {
 
   /// 프로바이더를 활용한 To-do app
   /// ChangeNotifierProxyProvider를 ProxyProvider로 리팩터링
+  // @override
+  // Widget build(BuildContext _) => TodoAppRefactoring();
+
+  /// StateNotifier를 활용한 To-do app
   @override
-  Widget build(BuildContext _) => TodoAppRefactoring();
+  Widget build(BuildContext _) => TodoAppState();
 }
