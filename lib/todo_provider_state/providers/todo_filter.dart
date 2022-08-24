@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_cheat_repo/todo_provider_state/models/todo_model.dart';
+import 'package:state_notifier/state_notifier.dart';
 
 class TodoFilterState extends Equatable {
   final Filter filter;
@@ -28,13 +28,10 @@ class TodoFilterState extends Equatable {
   }
 }
 
-class TodoFilter with ChangeNotifier {
-  TodoFilterState _state = TodoFilterState.initial();
-
-  TodoFilterState get state => _state;
+class TodoFilter extends StateNotifier<TodoFilterState> {
+  TodoFilter() : super(TodoFilterState.initial());
 
   void changeFilter(Filter newFilter) {
-    _state = _state.copyWith(filter: newFilter);
-    notifyListeners();
+    state = state.copyWith(filter: newFilter);
   }
 }
