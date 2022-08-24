@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cheat_repo/todo_provider_state/pages/todos_page.dart';
 import 'package:flutter_cheat_repo/todo_provider_state/providers/index.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 
 class TodoAppState extends StatelessWidget {
@@ -10,37 +11,21 @@ class TodoAppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<TodoFilter>(
-          create: (_) => TodoFilter(),
+        StateNotifierProvider<TodoFilter, TodoFilterState>(
+          create: (context) => TodoFilter(),
         ),
-        ChangeNotifierProvider<TodoSearch>(
-          create: (_) => TodoSearch(),
+        StateNotifierProvider<TodoSearch, TodoSearchState>(
+          create: (context) => TodoSearch(),
         ),
-        ChangeNotifierProvider<TodoList>(
-          create: (_) => TodoList(),
+        StateNotifierProvider<TodoList, TodoListState>(
+          create: (context) => TodoList(),
         ),
-        ProxyProvider<TodoList, ActiveTodoCount>(
-          update: (
-            BuildContext _,
-            TodoList todoList,
-            ActiveTodoCount? __,
-          ) =>
-              ActiveTodoCount(todoList: todoList),
+        StateNotifierProvider<ActiveTodoCount, ActiveTodoCountState>(
+          create: (context) => ActiveTodoCount(),
         ),
-        ProxyProvider3<TodoFilter, TodoSearch, TodoList, FilteredTodos>(
-          update: (
-            BuildContext _,
-            TodoFilter todoFilter,
-            TodoSearch todoSearch,
-            TodoList todoList,
-            FilteredTodos? __,
-          ) =>
-              FilteredTodos(
-            todoFilter: todoFilter,
-            todoSearch: todoSearch,
-            todoList: todoList,
-          ),
-        )
+        StateNotifierProvider<FilteredTodos, FilteredTodosState>(
+          create: (context) => FilteredTodos(),
+        ),
       ],
       child: MaterialApp(
         title: 'TODOS',
