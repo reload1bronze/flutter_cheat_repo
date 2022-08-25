@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cheat_repo/factory_container/main.dart';
+import 'package:flutter_cheat_repo/factory_container/factory_container_app.dart';
 
 void main() => runApp(const MyApp());
 
