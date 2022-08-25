@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cheat_repo/todo_provider_state/pages/todos_page.dart';
-import 'package:flutter_cheat_repo/todo_provider_state/providers/index.dart';
+import 'package:flutter_cheat_repo/todo_app_state_notifier_provider/pages/todos_page.dart';
+import 'package:flutter_cheat_repo/todo_app_state_notifier_provider/providers/index.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 

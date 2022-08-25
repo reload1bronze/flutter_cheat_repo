@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cheat_repo/todo_provider_refactoring/pages/todos_page.dart';
-import 'package:flutter_cheat_repo/todo_provider_refactoring/providers/index.dart';
+import 'package:flutter_cheat_repo/todo_app_proxy_provider/pages/todos_page.dart';
+import 'package:flutter_cheat_repo/todo_app_proxy_provider/providers/index.dart';
 import 'package:provider/provider.dart';
 
 class TodoAppRefactoring extends StatelessWidget {

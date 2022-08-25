@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cheat_repo/todo_provider/pages/todos_page.dart';
-import 'package:flutter_cheat_repo/todo_provider/providers/index.dart';
+import 'package:flutter_cheat_repo/todo_app_provider/pages/todos_page.dart';
+import 'package:flutter_cheat_repo/todo_app_provider/providers/index.dart';
 import 'package:provider/provider.dart';
 
 class TodoApp extends StatelessWidget {

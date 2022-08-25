@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cheat_repo/todo_provider_state/models/todo_model.dart';
-import 'package:flutter_cheat_repo/todo_provider_state/providers/index.dart';
-import 'package:flutter_cheat_repo/todo_provider_state/utils/debounce.dart';
+import 'package:flutter_cheat_repo/todo_app_proxy_provider/models/todo_model.dart';
+import 'package:flutter_cheat_repo/todo_app_proxy_provider/providers/index.dart';
+import 'package:flutter_cheat_repo/todo_app_proxy_provider/utils/debounce.dart';
 import 'package:provider/provider.dart';
 
 class TodosPage extends StatefulWidget {
@@ -54,7 +54,7 @@ class TodoHeader extends StatelessWidget {
           ),
         ),
         Text(
-          '${context.watch<ActiveTodoCountState>().activeTodoCount} items left',
+          '${context.watch<ActiveTodoCount>().state.activeTodoCount} items left',
           style: TextStyle(
             fontSize: 20.0,
             color: Colors.pinkAccent,
@@ -153,7 +153,7 @@ class SearchAndFilterTodo extends StatelessWidget {
   }
 
   Color textColor(BuildContext context, Filter filter) {
-    final currentFilter = context.watch<TodoFilterState>().filter;
+    final currentFilter = context.watch<TodoFilter>().state.filter;
     return currentFilter == filter ? Colors.blue : Colors.grey;
   }
 }
@@ -163,7 +163,7 @@ class ShowTodos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final todos = context.watch<FilteredTodosState>().filteredTodos;
+    final todos = context.watch<FilteredTodos>().state.filteredTodos;
 
     Widget showBackground(int direction) {
       return Container(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cheat_repo/todo_provider/models/todo_model.dart';
-import 'package:flutter_cheat_repo/todo_provider/providers/index.dart';
-import 'package:flutter_cheat_repo/todo_provider/utils/debounce.dart';
+import 'package:flutter_cheat_repo/todo_app_state_notifier_provider/models/todo_model.dart';
+import 'package:flutter_cheat_repo/todo_app_state_notifier_provider/providers/index.dart';
+import 'package:flutter_cheat_repo/todo_app_state_notifier_provider/utils/debounce.dart';
 import 'package:provider/provider.dart';
 
 class TodosPage extends StatefulWidget {
@@ -54,10 +54,7 @@ class TodoHeader extends StatelessWidget {
           ),
         ),
         Text(
-          '${context
-              .watch<ActiveTodoCount>()
-              .state
-              .activeTodoCount} items left',
+          '${context.watch<ActiveTodoCountState>().activeTodoCount} items left',
           style: TextStyle(
             fontSize: 20.0,
             color: Colors.pinkAccent,
@@ -90,9 +87,7 @@ class _CreateTodoState extends State<CreateTodo> {
       controller: newTodoController,
       decoration: InputDecoration(labelText: 'What to do?'),
       onSubmitted: (String? todoDesc) {
-        if (todoDesc != null && todoDesc
-            .trim()
-            .isNotEmpty) {
+        if (todoDesc != null && todoDesc.trim().isNotEmpty) {
           context.read<TodoList>().addTodo(todoDesc);
           newTodoController.clear();
         }
@@ -147,8 +142,8 @@ class SearchAndFilterTodo extends StatelessWidget {
         filter == Filter.all
             ? 'All'
             : filter == Filter.active
-            ? 'Active'
-            : 'Completed',
+                ? 'Active'
+                : 'Completed',
         style: TextStyle(
           fontSize: 18.0,
           color: textColor(context, filter),
@@ -158,10 +153,7 @@ class SearchAndFilterTodo extends StatelessWidget {
   }
 
   Color textColor(BuildContext context, Filter filter) {
-    final currentFilter = context
-        .watch<TodoFilter>()
-        .state
-        .filter;
+    final currentFilter = context.watch<TodoFilterState>().filter;
     return currentFilter == filter ? Colors.blue : Colors.grey;
   }
 }
@@ -171,10 +163,7 @@ class ShowTodos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final todos = context
-        .watch<FilteredTodos>()
-        .state
-        .filteredTodos;
+    final todos = context.watch<FilteredTodosState>().filteredTodos;
 
     Widget showBackground(int direction) {
       return Container(
@@ -182,7 +171,7 @@ class ShowTodos extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         color: Colors.redAccent,
         alignment:
-        direction == 0 ? Alignment.centerLeft : Alignment.centerRight,
+            direction == 0 ? Alignment.centerLeft : Alignment.centerRight,
         child: Icon(
           Icons.delete,
           size: 30.0,
@@ -273,40 +262,39 @@ class _TodoItemState extends State<TodoItem> {
 
               return StatefulBuilder(
                   builder: (BuildContext context, StateSetter setState) {
-                    return AlertDialog(
-                      title: Text('Edit Todo'),
-                      content: TextField(
-                        controller: textController,
-                        autofocus: true,
-                        decoration: InputDecoration(
-                          errorText: _error ? 'Value cannot be empty' : null,
-                        ),
-                      ),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: Text('CANCEL'),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              _error =
-                              textController.text.isEmpty ? true : false;
+                return AlertDialog(
+                  title: Text('Edit Todo'),
+                  content: TextField(
+                    controller: textController,
+                    autofocus: true,
+                    decoration: InputDecoration(
+                      errorText: _error ? 'Value cannot be empty' : null,
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: Text('CANCEL'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _error = textController.text.isEmpty ? true : false;
 
-                              if (!_error) {
-                                context.read<TodoList>().editTodo(
+                          if (!_error) {
+                            context.read<TodoList>().editTodo(
                                   widget.todo.id,
                                   textController.text,
                                 );
-                                Navigator.pop(context);
-                              }
-                            });
-                          },
-                          child: Text('EDIT'),
-                        )
-                      ],
-                    );
-                  });
+                            Navigator.pop(context);
+                          }
+                        });
+                      },
+                      child: Text('EDIT'),
+                    )
+                  ],
+                );
+              });
             });
       },
       leading: Checkbox(

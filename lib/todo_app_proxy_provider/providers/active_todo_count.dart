@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_cheat_repo/todo_provider_refactoring/models/todo_model.dart';
-import 'package:flutter_cheat_repo/todo_provider_refactoring/providers/index.dart';
+import 'package:flutter_cheat_repo/todo_app_proxy_provider/models/todo_model.dart';
+import 'package:flutter_cheat_repo/todo_app_proxy_provider/providers/index.dart';
 
 class ActiveTodoCountState extends Equatable {
   final int activeTodoCount;

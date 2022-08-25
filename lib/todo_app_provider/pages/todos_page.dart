@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cheat_repo/todo_provider_refactoring/models/todo_model.dart';
-import 'package:flutter_cheat_repo/todo_provider_refactoring/providers/index.dart';
-import 'package:flutter_cheat_repo/todo_provider_refactoring/utils/debounce.dart';
+import 'package:flutter_cheat_repo/todo_app_provider/models/todo_model.dart';
+import 'package:flutter_cheat_repo/todo_app_provider/providers/index.dart';
+import 'package:flutter_cheat_repo/todo_app_provider/utils/debounce.dart';
 import 'package:provider/provider.dart';
 
 class TodosPage extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_cheat_repo/todo_provider_state/models/todo_model.dart';
+import 'package:flutter_cheat_repo/todo_app_state_notifier_provider/models/todo_model.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 class TodoFilterState extends Equatable {

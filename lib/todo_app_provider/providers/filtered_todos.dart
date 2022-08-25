@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cheat_repo/todo_provider/models/todo_model.dart';
-import 'package:flutter_cheat_repo/todo_provider/providers/todo_filter.dart';
-import 'package:flutter_cheat_repo/todo_provider/providers/todo_list.dart';
-import 'package:flutter_cheat_repo/todo_provider/providers/todo_search.dart';
+import 'package:flutter_cheat_repo/todo_app_provider/models/todo_model.dart';
+import 'package:flutter_cheat_repo/todo_app_provider/providers/todo_filter.dart';
+import 'package:flutter_cheat_repo/todo_app_provider/providers/todo_list.dart';
+import 'package:flutter_cheat_repo/todo_app_provider/providers/todo_search.dart';
 
 class FilteredTodosState extends Equatable {
   final List<Todo> filteredTodos;
