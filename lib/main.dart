@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cheat_repo/todo_provider_state/todo_app_state.dart';
+import 'package:flutter_cheat_repo/factory_container/main.dart';
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  /// factory를 활용한 Container 생성 샘플
+  @override
+  Widget build(BuildContext _) => FactoryContainerApp();
 
   /// 프로바이더를 활용한 To-do app
   // @override
@@ -16,6 +20,6 @@ class MyApp extends StatelessWidget {
   // Widget build(BuildContext _) => TodoAppRefactoring();
 
   /// StateNotifier를 활용한 To-do app
-  @override
-  Widget build(BuildContext _) => TodoAppState();
+  // @override
+  // Widget build(BuildContext _) => TodoAppState();
 }
